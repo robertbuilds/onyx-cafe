@@ -84,6 +84,25 @@
                 });
             }
         });
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const menuCategories = document.querySelectorAll('.menu-category');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Scoatem active de pe butoane
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Ascundem toate categoriile
+                menuCategories.forEach(category => {
+                    category.classList.remove('menu-active');
+                });
+
+                // O afișăm doar pe cea pe care am dat click
+                const targetId = button.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('menu-active');
+            });
+        });
     });
 
     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
